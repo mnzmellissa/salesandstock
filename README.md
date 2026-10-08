@@ -1,4 +1,6 @@
 Sales & Stock – C# Project
+
+
 Overview
 This project was created to practice and consolidate C# development skills, focusing on:
 
