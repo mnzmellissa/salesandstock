@@ -1,0 +1,21 @@
+# Visual Studio
+.vs/
+**/.vs/
+
+# Build
+bin/
+obj/
+
+# Visual Studio user files
+*.user
+*.suo
+
+# Databases and indexes
+*.db
+*.vsidx
+
+# Copilot cache
+CopilotIndices/
+
+# Project evaluation cache
+ProjectEvaluation/
