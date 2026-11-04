@@ -1,4 +1,6 @@
-﻿while (true)
+﻿using SalesAndStock;
+
+while (true)
 {
     Console.Clear();
 
@@ -12,49 +14,26 @@
 
     string input = Console.ReadLine();
 
-    int option;
+     int.TryParse(input, out int option);
 
-    bool isValid = int.TryParse(input, out option);
+    MenuOption selectedOption = (MenuOption)option;
 
-    if (isValid == false)
+    switch (selectedOption)
     {
-        Console.WriteLine("Invalid option");
-        continue;
-    }
-
-    bool continueMessage = true;
-
-    switch (option)
-    {
-        case 1:
+        case MenuOption.QuantityProductsInStock:
             Console.WriteLine("Option 1 selected");
             break;
 
-        case 9:
-            continueMessage = false;
-            if (confirmQuit())
-            {
-                return;
-            }
-            break;
+        case MenuOption.Quit:
+            return;
 
         default:
             Console.WriteLine("Invalid option");
             break;
     }
 
-    if (continueMessage)
-    {
         Console.WriteLine();
-        Console.WriteLine("Press any key to continue..."); //deve aparecer em todas as opções exceto a 9
+        Console.WriteLine("Press any key to continue...");
         Console.ReadKey();
-    }
 }
 
-static bool confirmQuit()
-{
-    Console.WriteLine("Are you sure you want to quit? [Y/N]");
-    string response = Console.ReadLine();
-
-    return response == "Y" || response == "y";
-}
