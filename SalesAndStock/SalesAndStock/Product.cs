@@ -1,4 +1,5 @@
-﻿using System;
+﻿namespace SalesAndStock;
+
 public class Product
 {
     public int Id { get; set; }
