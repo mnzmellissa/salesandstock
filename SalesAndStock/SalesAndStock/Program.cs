@@ -12,11 +12,17 @@ while (true)
 
     Console.Write("Choose an option: ");
 
-    string? input = Console.ReadLine();
+    MenuOption SelectedOption()
+    {
+        string? input = Console.ReadLine();
 
-    int.TryParse(input, out int option);
+        int.TryParse(input, out int option);
 
-    MenuOption selectedOption = (MenuOption)option;
+        MenuOption menuOption = (MenuOption)option;
+        return menuOption;
+    }
+
+    var selectedOption = SelectedOption();
 
     switch (selectedOption)
     {
