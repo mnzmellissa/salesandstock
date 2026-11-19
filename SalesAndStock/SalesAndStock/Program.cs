@@ -2,21 +2,10 @@
 
 while (true)
 {
-    Console.Clear();
-
-    Console.WriteLine("~~~~ MENU OPTIONS ~~~~");
-    Console.WriteLine($"{(int)MenuOption.QuantityProductsInStock} - Quantity of Products in Stock");
-    Console.WriteLine($"{(int)MenuOption.Quit} - Quit");
-
-    Console.WriteLine();
-
-    Console.Write("Choose an option: ");
-
-    string? input = Console.ReadLine();
-
-    int.TryParse(input, out int option);
-
-    MenuOption selectedOption = (MenuOption)option;
+    PrintMenuOptions();
+    var selectedOption = GetSelectedOption();
+    if (selectedOption == MenuOption.Quit && ConfirmQuit())
+        return;
 
     switch (selectedOption)
     {
@@ -24,25 +13,43 @@ while (true)
             Console.WriteLine("Quantity products in stock report");
             break;
 
-        case MenuOption.Quit:
-            if (ConfirmQuit())
-                return;
-
-            break;
-
         default:
             Console.WriteLine("Invalid option");
             break;
     }
 
-    if (selectedOption != MenuOption.Quit)
-    {
-        Console.WriteLine();
-        Console.WriteLine("Press any key to continue...");
-        Console.ReadKey();
-    }
-
+    WaitKeyPressed(selectedOption);
 }
+
+static void WaitKeyPressed(MenuOption selectedOption)
+{
+    if (selectedOption == MenuOption.Quit)
+        return;
+
+    Console.WriteLine();
+    Console.WriteLine("Press any key to continue...");
+    Console.ReadKey();
+}
+
+static MenuOption GetSelectedOption()
+{
+    Console.Write("Choose an option: ");
+
+    string? input = Console.ReadLine();
+    int.TryParse(input, out int option);
+
+    return (MenuOption)option;
+}
+
+static void PrintMenuOptions()
+{
+    Console.Clear();
+    Console.WriteLine("~~~~ MENU OPTIONS ~~~~");
+    Console.WriteLine($"{(int)MenuOption.QuantityProductsInStock} - Quantity of Products in Stock");
+    Console.WriteLine($"{(int)MenuOption.Quit} - Quit");
+    Console.WriteLine();
+}
+
 static bool ConfirmQuit()
 {
     Console.WriteLine("Are you sure you want to quit? [Y/N]");
