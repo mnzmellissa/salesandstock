@@ -10,7 +10,12 @@ while (true)
     switch (selectedOption)
     {
         case MenuOption.QuantityProductsInStock:
-            Console.WriteLine("Quantity products in stock report");
+            var reader = new ReportHelper();
+            reader.PrintProductsInStock();
+            break;
+
+        case MenuOption.TotalSalesValueProductsStock:
+            Console.WriteLine("Total sales value of products in stock report");
             break;
 
         default:
@@ -45,7 +50,8 @@ static void PrintMenuOptions()
 {
     Console.Clear();
     Console.WriteLine("~~~~ MENU OPTIONS ~~~~");
-    Console.WriteLine($"{(int)MenuOption.QuantityProductsInStock} - Quantity of Products in Stock");
+    Console.WriteLine($"{(int)MenuOption.QuantityProductsInStock} - Quantity of Products in Stock Report");
+    Console.WriteLine($"{(int)MenuOption.TotalSalesValueProductsStock} - Total Sales Value of Products in Stock Report");
     Console.WriteLine($"{(int)MenuOption.Quit} - Quit");
     Console.WriteLine();
 }
